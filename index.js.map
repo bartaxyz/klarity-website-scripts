@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.ts"],
+  "sourcesContent": ["console.log(\"Hello World\");\n\nexport {};\n"],
+  "mappings": "MAAA,QAAQ,IAAI",
+  "names": []
+}
