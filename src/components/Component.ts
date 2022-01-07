@@ -1,5 +1,5 @@
 export class Component {
-    public static className = "any";
+    public static data = "any";
 
     constructor(element: HTMLElement) {}
 }

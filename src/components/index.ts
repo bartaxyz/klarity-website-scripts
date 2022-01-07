@@ -4,8 +4,8 @@ export const componentClasses = [FeedbackCarousel];
 
 export const enableComponents = () => {
   componentClasses.forEach((Component) => {
-    const className = Component.className;
-    const elements = document.querySelectorAll(`.${className}`);
+    const data = Component.data;
+    const elements = document.querySelectorAll(`[data-component=${data}]`);
 
     Array.from(elements).forEach((element) => {
       new Component(element as HTMLElement);
