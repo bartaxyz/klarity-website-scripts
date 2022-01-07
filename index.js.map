@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../src/components/Component.ts", "../src/components/FeedbackCarousel/FeedbackCarousel.ts"],
-  "sourcesContent": ["export class Component {\n    public static className = \"any\";\n\n    constructor(element: HTMLElement) {}\n}", "import { Component } from \"../Component\";\n\nexport class FeedbackCarousel extends Component {\n  public static className = \"feedback-carousel\";\n\n  constructor(element: HTMLElement) {\n    super(element);\n\n    console.log(\"Feedback Carousel\");\n    console.log(element);\n  }\n}\n"],
-  "mappings": "MAAO,WAAgB,CAGnB,YAAY,EAAsB,IAFpB,AADX,EACW,UAAY,MCCvB,mBAA+B,EAAU,CAG9C,YAAY,EAAsB,CAChC,MAAM,GAEN,QAAQ,IAAI,qBACZ,QAAQ,IAAI,KANA,AADT,EACS,UAAY",
+  "sourcesContent": ["export class Component {\n    public static data = \"any\";\n\n    constructor(element: HTMLElement) {}\n}", "import { Component } from \"../Component\";\n\nexport class FeedbackCarousel extends Component {\n  public static data = \"feedback-carousel\";\n\n  constructor(element: HTMLElement) {\n    super(element);\n\n    console.log(\"Feedback Carousel\");\n    console.log(element);\n  }\n}\n"],
+  "mappings": "MAAO,WAAgB,CAGnB,YAAY,EAAsB,IAFpB,AADX,EACW,KAAO,MCClB,mBAA+B,EAAU,CAG9C,YAAY,EAAsB,CAChC,MAAM,GAEN,QAAQ,IAAI,qBACZ,QAAQ,IAAI,KANA,AADT,EACS,KAAO",
   "names": []
 }
