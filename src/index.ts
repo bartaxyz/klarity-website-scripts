@@ -1,3 +1,1 @@
-console.log("Hello World");
-
-export {};
+import "./components/index";
