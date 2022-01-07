@@ -44,14 +44,34 @@ export class FeedbackCarousel extends Component {
   }
 
   public onScrollAreaScroll() {
-    this.scrollArea.scrollLeft
+    const area = this.scrollArea;
+
+    if (area.scrollLeft + area.offsetWidth >= area.scrollWidth) {
+      this.controlsArrowForward.classList.add("disabled");
+    }
+
+    if (area.scrollLeft === 0) {
+      this.controlsArrowBack.classList.add("disabled");
+    }
+
+    if (area.scrollLeft + area.offsetWidth < area.scrollWidth) {
+      this.controlsArrowForward.classList.remove("disabled");
+    }
+
+    if (area.scrollLeft > 0) {
+      this.controlsArrowBack.classList.remove("disabled");
+    }
   }
 
   public onBackClick() {
     console.log("Back");
+    // Get scroll area scroll
+    // Move scroll by 50% back
   }
 
   public onForwardClick() {
     console.log("Forward");
+    // Get scroll area scroll
+    // Move scroll by 50% forward
   }
 }
