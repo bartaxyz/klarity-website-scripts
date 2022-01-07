@@ -64,14 +64,20 @@ export class FeedbackCarousel extends Component {
   }
 
   public onBackClick() {
-    console.log("Back");
-    // Get scroll area scroll
-    // Move scroll by 50% back
+    const area = this.scrollArea;
+
+    area.scrollTo({
+      left: area.scrollLeft - area.offsetWidth / 2,
+      behavior: "smooth",
+    });
   }
 
   public onForwardClick() {
-    console.log("Forward");
-    // Get scroll area scroll
-    // Move scroll by 50% forward
+    const area = this.scrollArea;
+
+    area.scrollTo({
+      left: area.scrollLeft + area.offsetWidth / 2,
+      behavior: "smooth",
+    });
   }
 }
