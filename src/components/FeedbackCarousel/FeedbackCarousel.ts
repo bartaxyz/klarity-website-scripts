@@ -34,8 +34,17 @@ export class FeedbackCarousel extends Component {
       this.onForwardClick.bind(this)
     );
 
+    this.scrollArea.addEventListener(
+      "scroll",
+      this.onScrollAreaScroll.bind(this)
+    );
+
     console.log("Feedback Carousel");
     console.log(this.controls);
+  }
+
+  public onScrollAreaScroll() {
+    this.scrollArea.scrollLeft
   }
 
   public onBackClick() {
