@@ -1,0 +1,24 @@
+{
+  "name": "klarity-website-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild --bundle --outfile=dist/index.js src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bartaxyz/klarity-website-scripts.git"
+  },
+  "author": "Ondřej Bárta",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/bartaxyz/klarity-website-scripts/issues"
+  },
+  "homepage": "https://github.com/bartaxyz/klarity-website-scripts#readme",
+  "dependencies": {
+    "esbuild": "^0.14.10",
+    "typescript": "^4.5.4"
+  }
+}
