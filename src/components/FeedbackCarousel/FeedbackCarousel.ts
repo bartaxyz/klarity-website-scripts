@@ -39,8 +39,7 @@ export class FeedbackCarousel extends Component {
       this.onScrollAreaScroll.bind(this)
     );
 
-    console.log("Feedback Carousel");
-    console.log(this.controls);
+    this.onScrollAreaScroll();
   }
 
   public onScrollAreaScroll() {
