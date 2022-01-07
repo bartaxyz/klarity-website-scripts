@@ -9,6 +9,8 @@ export class DynamicLink extends Component {
     super(element);
 
     this.href = element.getAttribute("data-href") || "";
+
+    this.element.addEventListener("click", this.onLinkClick.bind(this));
   }
 
   public onLinkClick() {
