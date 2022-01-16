@@ -50,6 +50,10 @@ export class InteractiveCarousel extends Component {
     )!; */
 
     this.controlsArrowBack.addEventListener("click", () => {
+      if (this.controlsArrowBack.classList.contains("disabled")) {
+        return;
+      }
+
       this.changeIndex(this.currentIndex - 1);
 
       if (this.currentIndex === 0) {
@@ -60,8 +64,12 @@ export class InteractiveCarousel extends Component {
     });
 
     this.controlsArrowForward.addEventListener("click", () => {
-      this.changeIndex(this.currentIndex + 1);
+      if (this.controlsArrowForward.classList.contains("disabled")) {
+        return;
+      }
 
+      this.changeIndex(this.currentIndex + 1);
+      
       if (this.currentIndex === this.tabs.length - 1) {
         this.controlsArrowForward.classList.add("disabled");
       }
