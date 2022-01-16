@@ -69,7 +69,7 @@ export class InteractiveCarousel extends Component {
       }
 
       this.changeIndex(this.currentIndex + 1);
-      
+
       if (this.currentIndex === this.tabs.length - 1) {
         this.controlsArrowForward.classList.add("disabled");
       }
@@ -102,9 +102,10 @@ export class InteractiveCarousel extends Component {
      * - [ ] Scroll current tab in the middle of the screen
      */
 
-    const scrollArea = this.tabContainer;
+    console.log(this.tabContainer);
+    console.log("trying to scroll to:", currentTab.offsetLeft);
 
-    scrollArea.scrollTo({
+    this.tabContainer.scrollTo({
       left: currentTab.offsetLeft,
       // behavior: "smooth",
     });
