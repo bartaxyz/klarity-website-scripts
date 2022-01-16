@@ -98,7 +98,7 @@ export class InteractiveCarousel extends Component {
 
     scrollArea.scrollTo({
       left: currentTab.offsetLeft,
-      behavior: "smooth",
+      // behavior: "smooth",
     });
   }
 }
