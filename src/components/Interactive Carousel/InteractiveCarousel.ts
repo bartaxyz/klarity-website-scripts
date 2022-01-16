@@ -57,6 +57,8 @@ export class InteractiveCarousel extends Component {
         if (this.currentIndex === 0) {
           this.controlsArrowBack.classList.add("disabled");
         }
+
+        this.controlsArrowForward.classList.remove("disabled");
       }
     );
 
@@ -68,6 +70,8 @@ export class InteractiveCarousel extends Component {
         if (this.currentIndex === this.tabs.length - 1) {
           this.controlsArrowForward.classList.add("disabled");
         }
+
+        this.controlsArrowBack.classList.remove("disabled");
       }
     );
   }
