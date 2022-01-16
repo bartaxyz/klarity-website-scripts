@@ -54,7 +54,7 @@ export class FeedbackCarousel extends Component {
   public onResize() {
     this.onScrollAreaScroll();
 
-    this.scrollArea.style.marginLeft = `${this.headline.offsetLeft}px`;
+    this.scrollArea.style.paddingLeft = `${this.headline.offsetLeft}px`;
   }
 
   public onScrollAreaScroll() {
