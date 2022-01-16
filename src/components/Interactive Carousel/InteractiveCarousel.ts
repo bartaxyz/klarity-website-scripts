@@ -9,6 +9,9 @@ export class InteractiveCarousel extends Component {
   public tabs: HTMLElement[];
   public tabsContent: HTMLElement[];
 
+  public controlsArrowBack: HTMLElement;
+  public controlsArrowForward: HTMLElement;
+
   constructor(element: HTMLElement) {
     super(element);
 
@@ -36,25 +39,37 @@ export class InteractiveCarousel extends Component {
       });
     });
 
-    /* this.controlsArrowBack = element.querySelector(
+    this.controlsArrowBack = element.querySelector(
       `[data-component="${InteractiveCarousel.data}/controls/arrow-back"]`
     )!;
     this.controlsArrowForward = element.querySelector(
       `[data-component="${InteractiveCarousel.data}/controls/arrow-forward"]`
     )!;
-    this.scrollArea = element.querySelector(
+    /* this.scrollArea = element.querySelector(
       `[data-component="${InteractiveCarousel.data}/scroll-area"]`
-    )!;
+    )!; */
 
     this.controlsArrowBack.addEventListener(
       "click",
-      this.onBackClick.bind(this)
+      () => {
+        this.changeIndex(this.currentIndex - 1);
+
+        if (this.currentIndex === 0) {
+          this.controlsArrowBack.classList.add("disabled");
+        }
+      }
     );
 
     this.controlsArrowForward.addEventListener(
       "click",
-      this.onForwardClick.bind(this)
-    ); */
+      () => {
+        this.changeIndex(this.currentIndex + 1);
+
+        if (this.currentIndex === this.tabs.length - 1) {
+          this.controlsArrowForward.classList.add("disabled");
+        }
+      }
+    );
   }
 
   public changeIndex(index: number) {
@@ -103,23 +118,5 @@ export class InteractiveCarousel extends Component {
     if (area.scrollLeft > 0) {
       this.controlsArrowBack.classList.remove("disabled");
     } */
-  }
-
-  public onBackClick() {
-    /* const area = this.scrollArea;
-
-    area.scrollTo({
-      left: area.scrollLeft - Math.min(area.offsetWidth, 560),
-      behavior: "smooth",
-    }); */
-  }
-
-  public onForwardClick() {
-    /* const area = this.scrollArea;
-
-    area.scrollTo({
-      left: area.scrollLeft + Math.min(area.offsetWidth, 560),
-      behavior: "smooth",
-    }); */
   }
 }
