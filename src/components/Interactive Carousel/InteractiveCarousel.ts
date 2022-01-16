@@ -79,14 +79,6 @@ export class InteractiveCarousel extends Component {
   public changeIndex(index: number) {
     this.currentIndex = index;
 
-    /**
-     * TODO
-     * - [ ] Remove "current" classes from all tabs
-     * - [ ] Add "current" class to the current tab
-     * - [ ] Hide all tab contents
-     * - [ ] Show the current tab content
-     */
-
     this.tabs.forEach((tab) => {
       tab.classList.remove("current");
       tab.ariaSelected = "false";
@@ -101,26 +93,16 @@ export class InteractiveCarousel extends Component {
 
     this.tabsContent[index].classList.add("current");
 
+    /**
+     * TODO
+     * - [ ] Scroll current tab in the middle of the screen
+     */
 
-  }
+    const scrollArea = this.tabContainer;
 
-  public onScrollAreaScroll() {
-    /* const area = this.scrollArea;
-
-    if (area.scrollLeft + area.offsetWidth >= area.scrollWidth) {
-      this.controlsArrowForward.classList.add("disabled");
-    }
-
-    if (area.scrollLeft === 0) {
-      this.controlsArrowBack.classList.add("disabled");
-    }
-
-    if (area.scrollLeft + area.offsetWidth < area.scrollWidth) {
-      this.controlsArrowForward.classList.remove("disabled");
-    }
-
-    if (area.scrollLeft > 0) {
-      this.controlsArrowBack.classList.remove("disabled");
-    } */
+    scrollArea.scrollTo({
+      left: scrollArea.scrollLeft + (scrollArea.offsetWidth / 2) - (this.tabs[index].offsetWidth / 2),
+      behavior: "smooth",
+    });
   }
 }
