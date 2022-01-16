@@ -62,7 +62,7 @@ export class FeedbackCarousel extends Component {
 
     items[
       items.length - 1
-    ].style.paddingRight = `${this.controls.offsetLeft}px`;
+    ].style.paddingRight = `${this.headline.offsetLeft}px`;
   }
 
   public onScrollAreaScroll() {
