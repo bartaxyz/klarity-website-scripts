@@ -56,11 +56,13 @@ export class FeedbackCarousel extends Component {
 
     this.scrollArea.style.paddingLeft = `${this.headline.offsetLeft}px`;
 
-    const items = Array.from(this.scrollArea.children[0].children) as HTMLElement[];
+    const items = Array.from(
+      this.scrollArea.children[0].children
+    ) as HTMLElement[];
 
-    console.log(items[items.length - 1]);
-
-    items[items.length - 1].style.paddingRight = `${this.controls.offsetLeft}px`;
+    items[
+      items.length - 1
+    ].style.paddingRight = `${this.controls.offsetLeft}px`;
   }
 
   public onScrollAreaScroll() {
