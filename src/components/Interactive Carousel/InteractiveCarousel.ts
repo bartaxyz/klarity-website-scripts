@@ -106,8 +106,10 @@ export class InteractiveCarousel extends Component {
     console.log("trying to scroll to:", currentTab.offsetLeft);
 
     this.tabContainer.scrollTo({
-      left: currentTab.offsetLeft,
-      // behavior: "smooth",
+      left:
+        currentTab.offsetLeft -
+        (this.tabContainer.offsetWidth - currentTab.offsetWidth) / 2,
+      behavior: "smooth",
     });
   }
 }
