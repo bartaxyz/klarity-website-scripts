@@ -76,6 +76,13 @@ export class InteractiveCarousel extends Component {
 
       this.controlsArrowBack.classList.remove("disabled");
     });
+
+    /**
+     * Prevent manual scrolling
+     */
+    this.tabContainer.addEventListener("scroll", (event) => {
+      event.preventDefault();
+    });
   }
 
   public changeIndex(index: number) {
