@@ -89,7 +89,7 @@ export class FeedbackCarousel extends Component {
     const area = this.scrollArea;
 
     area.scrollTo({
-      left: area.scrollLeft - Math.min(area.offsetWidth, 560),
+      left: area.scrollLeft - Math.min(area.offsetWidth - 40, 560),
       behavior: "smooth",
     });
   }
@@ -98,7 +98,7 @@ export class FeedbackCarousel extends Component {
     const area = this.scrollArea;
 
     area.scrollTo({
-      left: area.scrollLeft + Math.min(area.offsetWidth, 560),
+      left: area.scrollLeft + Math.min(area.offsetWidth - 40, 560),
       behavior: "smooth",
     });
   }
