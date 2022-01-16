@@ -52,8 +52,6 @@ export class FeedbackCarousel extends Component {
   }
 
   public onResize() {
-    this.onScrollAreaScroll();
-
     this.scrollArea.style.paddingLeft = `${this.headline.offsetLeft}px`;
 
     const items = Array.from(
@@ -63,6 +61,8 @@ export class FeedbackCarousel extends Component {
     items[
       items.length - 1
     ].style.paddingRight = `${this.headline.offsetLeft}px`;
+
+    this.onScrollAreaScroll();
   }
 
   public onScrollAreaScroll() {
