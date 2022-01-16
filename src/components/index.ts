@@ -1,7 +1,12 @@
 import { DynamicLink } from "./DynamicLink/DynamicLink";
 import { FeedbackCarousel } from "./FeedbackCarousel/FeedbackCarousel";
+import { InteractiveCarousel } from "./Interactive Carousel/InteractiveCarousel";
 
-export const componentClasses = [DynamicLink, FeedbackCarousel];
+export const componentClasses = [
+  DynamicLink,
+  FeedbackCarousel,
+  InteractiveCarousel,
+];
 
 export const enableComponents = () => {
   componentClasses.forEach((Component) => {
