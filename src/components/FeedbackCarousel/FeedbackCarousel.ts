@@ -87,18 +87,20 @@ export class FeedbackCarousel extends Component {
 
   public onBackClick() {
     const area = this.scrollArea;
+    const itemWidth = (this.scrollArea.children[0].children[0] as HTMLElement).offsetWidth;
 
     area.scrollTo({
-      left: area.scrollLeft - Math.min(area.offsetWidth - 40, 560),
+      left: area.scrollLeft - Math.min(itemWidth, 560),
       behavior: "smooth",
     });
   }
 
   public onForwardClick() {
     const area = this.scrollArea;
+    const itemWidth = (this.scrollArea.children[0].children[0] as HTMLElement).offsetWidth;
 
     area.scrollTo({
-      left: area.scrollLeft + Math.min(area.offsetWidth - 40, 560),
+      left: area.scrollLeft + Math.min(itemWidth, 560),
       behavior: "smooth",
     });
   }
