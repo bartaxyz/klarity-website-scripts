@@ -62,7 +62,9 @@ export class FeedbackCarousel extends Component {
       items.length - 1
     ].style.paddingRight = `${this.headline.offsetLeft}px`;
 
-    this.onScrollAreaScroll();
+    setTimeout(() => {
+      this.onScrollAreaScroll();
+    }, 10);
   }
 
   public onScrollAreaScroll() {
@@ -87,7 +89,8 @@ export class FeedbackCarousel extends Component {
 
   public onBackClick() {
     const area = this.scrollArea;
-    const itemWidth = (this.scrollArea.children[0].children[0] as HTMLElement).offsetWidth;
+    const itemWidth = (this.scrollArea.children[0].children[0] as HTMLElement)
+      .offsetWidth;
 
     area.scrollTo({
       left: area.scrollLeft - Math.min(itemWidth, 560),
@@ -97,7 +100,8 @@ export class FeedbackCarousel extends Component {
 
   public onForwardClick() {
     const area = this.scrollArea;
-    const itemWidth = (this.scrollArea.children[0].children[0] as HTMLElement).offsetWidth;
+    const itemWidth = (this.scrollArea.children[0].children[0] as HTMLElement)
+      .offsetWidth;
 
     area.scrollTo({
       left: area.scrollLeft + Math.min(itemWidth, 560),
