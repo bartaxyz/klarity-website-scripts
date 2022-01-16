@@ -56,9 +56,9 @@ export class FeedbackCarousel extends Component {
 
     this.scrollArea.style.paddingLeft = `${this.headline.offsetLeft}px`;
 
-    (
-      this.scrollArea.querySelector(":last-child")! as HTMLElement
-    ).style.marginRight = `${this.controls.offsetLeft}px`;
+    const items = Array.from(this.scrollArea.children) as HTMLElement[];
+
+    items[items.length - 1].style.marginRight = `${this.controls.offsetLeft}px`;
   }
 
   public onScrollAreaScroll() {
