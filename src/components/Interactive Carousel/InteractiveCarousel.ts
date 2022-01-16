@@ -49,43 +49,39 @@ export class InteractiveCarousel extends Component {
       `[data-component="${InteractiveCarousel.data}/scroll-area"]`
     )!; */
 
-    this.controlsArrowBack.addEventListener(
-      "click",
-      () => {
-        this.changeIndex(this.currentIndex - 1);
+    this.controlsArrowBack.addEventListener("click", () => {
+      this.changeIndex(this.currentIndex - 1);
 
-        if (this.currentIndex === 0) {
-          this.controlsArrowBack.classList.add("disabled");
-        }
-
-        this.controlsArrowForward.classList.remove("disabled");
+      if (this.currentIndex === 0) {
+        this.controlsArrowBack.classList.add("disabled");
       }
-    );
 
-    this.controlsArrowForward.addEventListener(
-      "click",
-      () => {
-        this.changeIndex(this.currentIndex + 1);
+      this.controlsArrowForward.classList.remove("disabled");
+    });
 
-        if (this.currentIndex === this.tabs.length - 1) {
-          this.controlsArrowForward.classList.add("disabled");
-        }
+    this.controlsArrowForward.addEventListener("click", () => {
+      this.changeIndex(this.currentIndex + 1);
 
-        this.controlsArrowBack.classList.remove("disabled");
+      if (this.currentIndex === this.tabs.length - 1) {
+        this.controlsArrowForward.classList.add("disabled");
       }
-    );
+
+      this.controlsArrowBack.classList.remove("disabled");
+    });
   }
 
   public changeIndex(index: number) {
     this.currentIndex = index;
+
+    const currentTab = this.tabs[index];
 
     this.tabs.forEach((tab) => {
       tab.classList.remove("current");
       tab.ariaSelected = "false";
     });
 
-    this.tabs[index].classList.add("current");
-    this.tabs[index].ariaSelected = "true";
+    currentTab.classList.add("current");
+    currentTab.ariaSelected = "true";
 
     this.tabsContent.forEach((tabContent) => {
       tabContent.classList.remove("current");
@@ -101,7 +97,7 @@ export class InteractiveCarousel extends Component {
     const scrollArea = this.tabContainer;
 
     scrollArea.scrollTo({
-      left: scrollArea.scrollLeft + (scrollArea.offsetWidth / 2) - (this.tabs[index].offsetWidth / 2),
+      left: currentTab.offsetLeft,
       behavior: "smooth",
     });
   }
