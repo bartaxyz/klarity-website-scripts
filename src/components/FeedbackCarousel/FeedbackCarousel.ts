@@ -7,6 +7,7 @@ export class FeedbackCarousel extends Component {
   public controlsArrowBack: HTMLElement;
   public controlsArrowForward: HTMLElement;
   public scrollArea: HTMLElement;
+  public headline: HTMLElement;
 
   constructor(element: HTMLElement) {
     super(element);
@@ -22,6 +23,10 @@ export class FeedbackCarousel extends Component {
     )!;
     this.scrollArea = element.querySelector(
       `[data-component="${FeedbackCarousel.data}/scroll-area"]`
+    )!;
+
+    this.headline = element.querySelector(
+      `[data-component="${FeedbackCarousel.data}/headline"]`
     )!;
 
     this.controlsArrowBack.addEventListener(
@@ -40,6 +45,16 @@ export class FeedbackCarousel extends Component {
     );
 
     this.onScrollAreaScroll();
+
+    window.addEventListener("resize", this.onResize.bind(this));
+
+    this.onResize();
+  }
+
+  public onResize() {
+    this.onScrollAreaScroll();
+
+    this.scrollArea.style.marginLeft = `${this.headline.offsetLeft}px`;
   }
 
   public onScrollAreaScroll() {
