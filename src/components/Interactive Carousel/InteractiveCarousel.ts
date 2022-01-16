@@ -104,14 +104,6 @@ export class InteractiveCarousel extends Component {
 
     this.tabsContent[index].classList.add("current");
 
-    /**
-     * TODO
-     * - [ ] Scroll current tab in the middle of the screen
-     */
-
-    console.log(this.tabContainer);
-    console.log("trying to scroll to:", currentTab.offsetLeft);
-
     this.tabContainer.scrollTo({
       left:
         currentTab.offsetLeft -
