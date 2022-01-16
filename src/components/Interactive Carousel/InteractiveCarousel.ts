@@ -30,6 +30,12 @@ export class InteractiveCarousel extends Component {
 
     this.changeIndex(0);
 
+    this.tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        this.changeIndex(index);
+      });
+    });
+
     /* this.controlsArrowBack = element.querySelector(
       `[data-component="${InteractiveCarousel.data}/controls/arrow-back"]`
     )!;
