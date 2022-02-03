@@ -120,7 +120,7 @@ export class InteractiveCarousel extends Component {
 
     currentTab.classList.add("current");
     currentTab.ariaSelected = "true";
-    
+
     if (currentProgress && currentProgressBar) {
       currentProgress.style.display = 'block';
       currentProgressBar.style.width = `${this.currentProgress}%`;
@@ -144,13 +144,14 @@ export class InteractiveCarousel extends Component {
     }
   }
 
+  public animationDurationSecond = 5;
   public updateFramesPerCycle = 60;
 
   public updateProgress() {
     const currentProgressBar = this.progressBars[this.currentIndex];
     const progressDelta = 100 / this.updateFramesPerCycle;
 
-    this.currentProgress += progressDelta;
+    this.currentProgress = Math.min(this.currentProgress + progressDelta, 100);
 
     currentProgressBar.style.width = `${this.currentProgress}%`;
 
@@ -163,7 +164,7 @@ export class InteractiveCarousel extends Component {
     } else {
       setTimeout(()=> {
         this.updateProgress();
-      }, 1000 / this.updateFramesPerCycle);
+      }, (this.animationDurationSecond * 1000) / this.updateFramesPerCycle);
     }
   }
 }
