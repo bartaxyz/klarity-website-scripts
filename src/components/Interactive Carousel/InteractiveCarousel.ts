@@ -4,10 +4,14 @@ export class InteractiveCarousel extends Component {
   public static data = "interactive-carousel";
 
   public currentIndex = 0;
+  public currentProgress = 0;
 
   public tabContainer: HTMLElement;
   public tabs: HTMLElement[];
   public tabsContent: HTMLElement[];
+
+  public progresses: HTMLElement[] = [];
+  public progressBars: HTMLElement[] = [];
 
   public controlsArrowBack: HTMLElement;
   public controlsArrowForward: HTMLElement;
@@ -28,6 +32,18 @@ export class InteractiveCarousel extends Component {
     this.tabsContent = Array.from(
       element.querySelectorAll(
         `[data-component="${InteractiveCarousel.data}/content"] > *`
+      )
+    );
+
+    this.progresses = Array.from(
+      element.querySelectorAll(
+        `[data-component="${InteractiveCarousel.data}/progress"]`
+      )
+    );
+
+    this.progressBars = Array.from(
+      element.querySelectorAll(
+        `[data-component="${InteractiveCarousel.data}/progress-bar"]`
       )
     );
 
@@ -89,14 +105,26 @@ export class InteractiveCarousel extends Component {
     this.currentIndex = index;
 
     const currentTab = this.tabs[index];
+    const currentProgress = this.progresses[index];
+    const currentProgressBar = this.progressBars[index];
+    this.currentProgress = 0;
 
     this.tabs.forEach((tab) => {
       tab.classList.remove("current");
       tab.ariaSelected = "false";
     });
 
+    this.progresses.forEach((progress) => {
+      progress.style.display = "none";
+    })
+
     currentTab.classList.add("current");
     currentTab.ariaSelected = "true";
+    
+    if (currentProgress && currentProgressBar) {
+      currentProgress.style.display = 'block';
+      currentProgressBar.style.width = `${this.currentProgress}%`;
+    }
 
     this.tabsContent.forEach((tabContent) => {
       tabContent.classList.remove("current");
@@ -110,5 +138,32 @@ export class InteractiveCarousel extends Component {
         (this.tabContainer.offsetWidth - currentTab.offsetWidth) / 2,
       behavior: "smooth",
     });
+
+    if (currentProgress && currentProgressBar) {
+      this.updateProgress();
+    }
+  }
+
+  public updateFramesPerCycle = 60;
+
+  public updateProgress() {
+    const currentProgressBar = this.progressBars[this.currentIndex];
+    const progressDelta = 100 / this.updateFramesPerCycle;
+
+    this.currentProgress += progressDelta;
+
+    currentProgressBar.style.width = `${this.currentProgress}%`;
+
+    if (this.currentProgress === 100) {
+      if (this.currentIndex === this.tabs.length - 1) {
+        this.changeIndex(0);
+      } else {
+        this.changeIndex(this.currentIndex + 1);
+      }
+    } else {
+      setTimeout(()=> {
+        this.updateProgress();
+      }, 1000 / this.updateFramesPerCycle);
+    }
   }
 }
