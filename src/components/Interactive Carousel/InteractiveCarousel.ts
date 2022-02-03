@@ -145,7 +145,7 @@ export class InteractiveCarousel extends Component {
   }
 
   public animationDurationSecond = 5;
-  public updateFramesPerCycle = 60;
+  public updateFramesPerCycle = 240;
 
   public updateProgress() {
     const currentProgressBar = this.progressBars[this.currentIndex];
