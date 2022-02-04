@@ -144,7 +144,7 @@ export class InteractiveCarousel extends Component {
     }
   }
 
-  public animationDurationSecond = 5;
+  public animationDurationSecond = 12;
   public updateFramesPerCycle = 240;
 
   public updateProgress() {
