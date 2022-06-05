@@ -60,8 +60,7 @@ export class InteractiveCarousel extends Component {
         }
       });
 
-      tab.addEventListener("mouseout", () => {
-        console.log('mouseout');
+      tab.addEventListener("mouseleave", () => {
         this.pauseProgress = false;
       });
     });
