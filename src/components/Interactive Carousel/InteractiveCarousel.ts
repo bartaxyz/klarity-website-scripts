@@ -53,6 +53,16 @@ export class InteractiveCarousel extends Component {
       tab.addEventListener("click", () => {
         this.changeIndex(index);
       });
+
+      tab.addEventListener("mouseover", () => {
+        if (tab.classList.contains("current")) {
+          this.pauseProgress = true;
+        }
+      });
+
+      tab.addEventListener("mouseout", () => {
+        this.pauseProgress = false;
+      });
     });
 
     this.controlsArrowBack = element.querySelector(
@@ -116,13 +126,13 @@ export class InteractiveCarousel extends Component {
 
     this.progresses.forEach((progress) => {
       progress.style.display = "none";
-    })
+    });
 
     currentTab.classList.add("current");
     currentTab.ariaSelected = "true";
 
     if (currentProgress && currentProgressBar) {
-      currentProgress.style.display = 'block';
+      currentProgress.style.display = "block";
       currentProgressBar.style.width = `${this.currentProgress}%`;
     }
 
@@ -145,9 +155,15 @@ export class InteractiveCarousel extends Component {
   }
 
   public animationDurationSecond = 12;
-  public updateFramesPerCycle = 240;
+  public updateFramesPerCycle = 360;
+
+  public pauseProgress = false;
 
   public updateProgress() {
+    if (this.pauseProgress) {
+      return;
+    }
+
     const currentProgressBar = this.progressBars[this.currentIndex];
     const progressDelta = 100 / this.updateFramesPerCycle;
 
@@ -162,7 +178,7 @@ export class InteractiveCarousel extends Component {
         this.changeIndex(this.currentIndex + 1);
       }
     } else {
-      setTimeout(()=> {
+      setTimeout(() => {
         this.updateProgress();
       }, (this.animationDurationSecond * 1000) / this.updateFramesPerCycle);
     }
