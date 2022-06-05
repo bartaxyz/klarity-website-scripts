@@ -62,6 +62,7 @@ export class InteractiveCarousel extends Component {
 
       tab.addEventListener("mouseleave", () => {
         this.pauseProgress = false;
+        this.updateProgress();
       });
     });
 
