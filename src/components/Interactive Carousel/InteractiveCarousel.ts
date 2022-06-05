@@ -55,14 +55,12 @@ export class InteractiveCarousel extends Component {
       });
 
       tab.addEventListener("mouseover", () => {
-        console.log('mouseover');
         if (tab.classList.contains("current")) {
           this.pauseProgress = true;
         }
       });
 
       tab.addEventListener("mouseleave", () => {
-        console.log("mouseleave");
         this.pauseProgress = false;
         this.updateProgress();
       });
