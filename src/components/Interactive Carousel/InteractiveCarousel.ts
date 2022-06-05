@@ -61,6 +61,7 @@ export class InteractiveCarousel extends Component {
       });
 
       tab.addEventListener("mouseout", () => {
+        console.log('mouseout');
         this.pauseProgress = false;
       });
     });
