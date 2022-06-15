@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js --minify --sourcemap --target=chrome58,firefox57,safari11,edge16"
+    "copy-public-folder-to-dist": "cp -r public/* dist",
+    "esbuild": "esbuild src/index.ts --bundle --outfile=dist/index.js --minify --sourcemap --target=chrome58,firefox57,safari11,edge16",
+    "build": "npm run copy-public-folder-to-dist && npm run esbuild"
   },
   "repository": {
     "type": "git",
