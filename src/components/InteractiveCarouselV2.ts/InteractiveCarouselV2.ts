@@ -134,10 +134,12 @@ export class InteractiveCarouselV2 extends Component {
     }
   }
 
-  public animationDurationSecond = 12;
-  public updateFramesPerCycle = 360;
+  public animationDurationSecond = 12 as const;
+  public updateFramesPerCycle = 360 as const;
 
   public pauseProgress = false;
+
+  public timeout: number | undefined;
 
   public updateProgress() {
     if (this.pauseProgress) {
@@ -158,7 +160,11 @@ export class InteractiveCarouselV2 extends Component {
         this.changeIndex(this.currentIndex + 1);
       }
     } else {
-      setTimeout(() => {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+      
+      this.timeout = setTimeout(() => {
         this.updateProgress();
       }, (this.animationDurationSecond * 1000) / this.updateFramesPerCycle);
     }
