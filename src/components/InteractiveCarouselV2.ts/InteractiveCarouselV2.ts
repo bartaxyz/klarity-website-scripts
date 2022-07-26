@@ -14,9 +14,6 @@ export class InteractiveCarouselV2 extends Component {
   public progresses: HTMLElement[] = [];
   public progressBars: HTMLElement[] = [];
 
-  public controlsArrowBack: HTMLElement;
-  public controlsArrowForward: HTMLElement;
-
   constructor(element: HTMLElement) {
     super(element);
 
@@ -71,44 +68,6 @@ export class InteractiveCarouselV2 extends Component {
         this.pauseProgress = false;
         this.updateProgress();
       });
-    });
-
-    this.controlsArrowBack = element.querySelector(
-      `[data-component="${InteractiveCarouselV2.data}/controls/arrow-back"]`
-    )!;
-    this.controlsArrowForward = element.querySelector(
-      `[data-component="${InteractiveCarouselV2.data}/controls/arrow-forward"]`
-    )!;
-    /* this.scrollArea = element.querySelector(
-      `[data-component="${InteractiveCarousel.data}/scroll-area"]`
-    )!; */
-
-    this.controlsArrowBack.addEventListener("click", () => {
-      if (this.controlsArrowBack.classList.contains("disabled")) {
-        return;
-      }
-
-      this.changeIndex(this.currentIndex - 1);
-
-      if (this.currentIndex === 0) {
-        this.controlsArrowBack.classList.add("disabled");
-      }
-
-      this.controlsArrowForward.classList.remove("disabled");
-    });
-
-    this.controlsArrowForward.addEventListener("click", () => {
-      if (this.controlsArrowForward.classList.contains("disabled")) {
-        return;
-      }
-
-      this.changeIndex(this.currentIndex + 1);
-
-      if (this.currentIndex === this.tabs.length - 1) {
-        this.controlsArrowForward.classList.add("disabled");
-      }
-
-      this.controlsArrowBack.classList.remove("disabled");
     });
 
     /**
