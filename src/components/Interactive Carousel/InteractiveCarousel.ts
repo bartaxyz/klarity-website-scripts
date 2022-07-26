@@ -8,6 +8,7 @@ export class InteractiveCarousel extends Component {
 
   public tabContainer: HTMLElement;
   public tabs: HTMLElement[];
+  public tabsCards: HTMLElement[];
   public tabsContent: HTMLElement[];
 
   public progresses: HTMLElement[] = [];
@@ -26,6 +27,12 @@ export class InteractiveCarousel extends Component {
     this.tabs = Array.from(
       this.tabContainer.querySelectorAll(
         `[data-component="${InteractiveCarousel.data}/tabs"] > *`
+      )
+    );
+
+    this.tabsCards = Array.from(
+      element.querySelectorAll(
+        `[data-component="${InteractiveCarousel.data}/cards"] > *`
       )
     );
 
@@ -137,11 +144,21 @@ export class InteractiveCarousel extends Component {
       currentProgressBar.style.width = `${this.currentProgress}%`;
     }
 
-    this.tabsContent.forEach((tabContent) => {
-      tabContent.classList.remove("current");
-    });
-
-    this.tabsContent[index].classList.add("current");
+    /**
+     * Try & catching to make sure errors here don't fail the entire function
+     */
+    try {
+      this.tabsCards.forEach((card) => {
+        card.classList.remove("current");
+      });
+      this.tabsCards[index].classList.add("current");
+    } catch (e) {}
+    try {
+      this.tabsContent.forEach((tabContent) => {
+        tabContent.classList.remove("current");
+      });
+      this.tabsContent[index].classList.add("current");
+    } catch (e) {}
 
     this.tabContainer.scrollTo({
       left:
