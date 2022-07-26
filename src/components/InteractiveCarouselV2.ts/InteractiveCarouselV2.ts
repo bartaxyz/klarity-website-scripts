@@ -132,15 +132,10 @@ export class InteractiveCarouselV2 extends Component {
       tab.ariaSelected = "false";
     });
 
-    this.progresses.forEach((progress) => {
-      progress.style.display = "none";
-    });
-
     currentTab.classList.add("current");
     currentTab.ariaSelected = "true";
 
     if (currentProgress && currentProgressBar) {
-      currentProgress.style.display = "block";
       currentProgressBar.style.width = `${this.currentProgress}%`;
     }
 
