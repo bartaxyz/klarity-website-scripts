@@ -1,5 +1,8 @@
 import { Component } from "../Component";
 
+/**
+ * @deprecated No longer used, instead use InteractiveCarouselV2
+ */
 export class InteractiveCarousel extends Component {
   public static data = "interactive-carousel";
 
