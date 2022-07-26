@@ -1,12 +1,14 @@
 import { DynamicLink } from "./DynamicLink/DynamicLink";
 import { FeedbackCarousel } from "./FeedbackCarousel/FeedbackCarousel";
 import { InteractiveCarousel } from "./Interactive Carousel/InteractiveCarousel";
+import { InteractiveCarouselV2 } from "./InteractiveCarouselV2.ts/InteractiveCarouselV2";
 import { NavBar } from "./NavBar/NavBar";
 
 export const componentClasses = [
   DynamicLink,
   FeedbackCarousel,
   InteractiveCarousel,
+  InteractiveCarouselV2,
   NavBar,
 ];
 
