@@ -94,7 +94,15 @@ export class InteractiveCarouselV2 extends Component {
     currentTab.classList.add("current");
     currentTab.ariaSelected = "true";
 
+    /**
+     * Collapse all other progress bars
+     */
+    this.progressBars.forEach((progressBar) => {
+      progressBar.style.display = "none";
+    });
+
     if (currentProgress && currentProgressBar) {
+      currentProgressBar.style.display = "";
       currentProgressBar.style.width = `${this.currentProgress}%`;
     }
 
